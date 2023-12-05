@@ -1,15 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Form</title>
-</head>
-<body>
-        <form action="log.php" method="get">
-    <link rel="stylesheet" href="index.css">
-        <h1>E Farming System</h1>
-        <button type="submit" name="submit">Buyer</button>&nbsp<button type="submit" name="submit">Seller</button>&nbsp;
-        <button type="submit" name="submit">Admin</button>
-        
-        </form>
-</body>
-</html>
+<?php
+
+	include('functions.php');
+
+	if(!isLoggedIn()){
+		$_SESSION['msg'] = "You must logged in first";
+		header('location: login.php');
+	}
+	else if(isLoggedIn() && isSeller($_SESSION['user'])){
+		header('location: seller/index.php');
+	}else if(isLoggedIn() && isBuyer($_SESSION['user'])){
+		header('location: buyer/index.php');
+	}else if(isLoggedIn() && isAdmin($_SESSION['user'])){
+		header('location: admin/index.php');
+	}
+?>

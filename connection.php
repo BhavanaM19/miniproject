@@ -1,16 +1,23 @@
 <?php
 
-$hostname ="localhost";
-$username="root";
-$password="";
-$db_name= "farm";
+	//set variable for connection
+	//for webhost 
 
+	// $dbhost = "localhost";
+	// $dbuser = "id9865653_root";
+	// $dbpassword = "12345";
+	// $dbname = "id9865653_localhost";
+	
+	//
 
-$conn = mysqli_connect($hostname,$username,$password,$db_name);
+	$dbhost = "localhost";
+	$dbuser = "root";
+	$dbpassword = "";
+	$dbname = "multi-login";
 
-if(!$conn){
-
-    echo "connection failed";
-}
-
+    $db = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
+    if(!$db){
+		die("connection failed" .mysqli_connect_error());
+	}
 ?>
+ 
